@@ -21,11 +21,16 @@ export class ProductComponent {
     description: ''
   };
   @Output() addedProduct = new EventEmitter<Product>();
+  @Output() showProduct = new EventEmitter<string>();//enviamos solo el id para que el componente padre haga la request por id
 
   constructor() { }
 
   onAddToCart() {
     this.addedProduct.emit(this.product);
+  }
+
+  onShowDetail(){
+    this.showProduct.emit(this.product.id)
   }
 
 }
