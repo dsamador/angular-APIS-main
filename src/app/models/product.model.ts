@@ -11,3 +11,8 @@ export interface Product {
   description: string;
   category: Category;
 }
+
+/* Con omit estamos diciendo cuales campos queremos que no se clonen */
+export interface CreateProductDTO extends Omit<Product, 'id' | 'category'>{
+  categoryId: number;
+}
