@@ -25,4 +25,13 @@ export class ProductsService {
   create(dto: CreateProductDTO){//enviamos un dto
     return this.http.post<Product>(this.apiUrl, dto);/* recibimos un product */
   }
+
+  update(id: string, dto: any){
+    return this.http.put<Product>(`${this.apiUrl}/${id}`, dto);
+  }
+
+  delete(id: string){
+    return this.http.delete<boolean>(`${this.apiUrl}/${id}`);
+  }
+
 }
