@@ -1,7 +1,7 @@
 {
   "/api/*":{
     "target": "https://young-sands-07814.herokuapp.com",
-    "secure": true,
+    "secure": false,
     "logLevel": "debug",
     "chageOrigin": true
   }

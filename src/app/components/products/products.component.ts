@@ -30,6 +30,7 @@ export class ProductsComponent implements OnInit {
 
   limit: number = 10;
   offset: number = 0;
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
   constructor(
     private storeService: StoreService,
@@ -39,7 +40,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productsService.getProductsByPage(10, 0)
+    this.productsService.getProductsByPage(10,0)
     .subscribe(data => {
       this.products = data;
       this.offset += this.limit;
@@ -56,10 +57,15 @@ export class ProductsComponent implements OnInit {
   }
 
   onShowDetail(id: string){
+    this.statusDetail = 'loading';
     this.productsService.getProduct(id)
     .subscribe(data => {
       this.toggleProductDetail();
       this.productChosen = data;
+      this.statusDetail = 'success';
+    }, (error) => {
+      window.alert(error);
+      this.statusDetail = 'error';
     })
   }
 
