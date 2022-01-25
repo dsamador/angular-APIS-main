@@ -10,6 +10,7 @@ export interface Product {
   images: string[];
   description: string;
   category: Category;
+  taxes?: number;
 }
 
 /* Con omit estamos diciendo cuales campos queremos que no se clonen */
